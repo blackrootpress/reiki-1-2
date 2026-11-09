@@ -90,28 +90,32 @@ th{background:var(--c-soft)}
 .rkfig .pillow{fill:#fff;stroke:#d9d1c4;stroke-width:1.2}
 .rkfig .chair{fill:#ece5f2;stroke:#cfc5da;stroke-width:1.2}
 .rkfig .chairl{stroke:#cfc5da;stroke-width:5;stroke-linecap:round;fill:none}
-.rkfig .body path,.rkfig .body rect,.rkfig .body ellipse{fill:#efe6db;stroke:#8c8296;stroke-width:1.6;stroke-linejoin:round}
-.rkfig .hair{fill:#7a675c;stroke:#5d4d44;stroke-width:1}
-.rkfig .face{fill:none;stroke:#7d7288;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
-.rkfig .fold,.rkfig .spine{fill:none;stroke:#b3a9bb;stroke-width:1.2;stroke-linecap:round}
-.rkfig .spine{stroke-dasharray:3 4}
-.rkfig .limb-o{fill:none;stroke:#8c8296;stroke-width:13;stroke-linecap:round;stroke-linejoin:round}
-.rkfig .limb{fill:none;stroke:#efe6db;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
-.rkfig .parm{stroke:#c4572f;stroke-opacity:.28;stroke-width:15;stroke-linecap:round}
-.rkfig .hand path,.rkfig .hand ellipse{fill:#d0683f;stroke:#7e2f13;stroke-width:1.3;stroke-linejoin:round}
-.rkfig .hand .fl{fill:none;stroke:#7e2f13;stroke-opacity:.55;stroke-width:1}
-.rkfig .hand.hover path,.rkfig .hand.hover ellipse{fill:#d0683f;fill-opacity:.16;stroke:#b0461f;stroke-dasharray:3.5 2.5;stroke-width:1.6}
-.rkfig .hand.hover .fl{stroke-dasharray:none;stroke-opacity:.35}
-.rkfig .hand.under path,.rkfig .hand.under ellipse{fill:#d0683f;fill-opacity:.38;stroke:#7e2f13;stroke-opacity:.75;stroke-dasharray:1.5 2.5}
+.rkfig .body path,.rkfig .body rect,.rkfig .body ellipse{fill:#f0dab8;stroke:#946338;stroke-width:1.5;stroke-linejoin:round}
+.rkfig .grain{fill:none;stroke:#946338;stroke-opacity:.38;stroke-width:1;stroke-linecap:round}
+.rkfig .spine{fill:none;stroke:#946338;stroke-opacity:.55;stroke-width:1.2;stroke-linecap:round;stroke-dasharray:3 4}
+.rkfig .seg-o{fill:none;stroke:#946338;stroke-linecap:round;stroke-linejoin:round}
+.rkfig .seg{fill:none;stroke:#f0dab8;stroke-linecap:round;stroke-linejoin:round}
+.rkfig .jt,.rkfig .cpad{fill:#f0dab8;stroke:#946338;stroke-width:1.4;stroke-linejoin:round}
+.rkfig .p .seg-o{stroke:#6e4522}
+.rkfig .p .seg{stroke:#d69b62}
+.rkfig .hand .pad,.rkfig .hand .jt{fill:#f0dab8;stroke:#946338;stroke-width:1.3;stroke-linejoin:round}
+.rkfig .hand.p .pad,.rkfig .hand.p .jt{fill:#d69b62;stroke:#6e4522}
+.rkfig .hand .fl{fill:none;stroke:#946338;stroke-opacity:.7;stroke-width:1;stroke-linecap:round}
+.rkfig .hand.p .fl{stroke:#6e4522}
+.rkfig .hand .glow{fill:#f26b3a;opacity:.32}
+.rkfig .hand.hover .pad,.rkfig .hand.hover .jt{fill:#f26b3a;fill-opacity:.14;stroke:#b8431a;stroke-dasharray:3.5 2.5;stroke-width:1.6}
+.rkfig .hand.hover .fl,.rkfig .hand.hover .glow{display:none}
+.rkfig .hand.under .pad,.rkfig .hand.under .jt{fill-opacity:.55;stroke-opacity:.8;stroke-dasharray:1.5 2.5}
+.rkfig .hand.under .glow{opacity:.16}
 .rkfig .badge circle{fill:#2b2438}
 .rkfig .badge text{fill:#fff;font:700 12px system-ui,sans-serif}
 .rkfig .sweep{fill:none;stroke:#2e86de;stroke-width:2.2;stroke-dasharray:6 5;stroke-linecap:round}
 .rkfig .sweep-h{fill:none;stroke:#2e86de;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .fig-key{display:flex;flex-wrap:wrap;gap:6px 18px;font:13px system-ui,sans-serif;color:var(--muted);margin:8px 0 14px}
 .fig-key span{display:inline-flex;align-items:center;gap:6px}
-.fig-key i{display:inline-block;width:20px;height:12px;border-radius:6px;background:#d0683f;border:1.3px solid #7e2f13}
-.fig-key i.hv{background:rgba(208,104,63,.16);border:1.6px dashed #b0461f}
-.fig-key i.un{background:rgba(208,104,63,.5);border:1.3px dotted #7e2f13}
+.fig-key i{display:inline-block;width:20px;height:12px;border-radius:6px;background:#f0dab8;border:1.3px solid #946338;box-shadow:0 0 0 3px rgba(242,107,58,.3)}
+.fig-key i.hv{background:rgba(242,107,58,.14);border:1.6px dashed #b8431a;box-shadow:none}
+.fig-key i.un{background:rgba(240,218,184,.55);border:1.3px dotted #946338;box-shadow:0 0 0 3px rgba(242,107,58,.15)}
 .pos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:16px 0}
 .pos{margin:0;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;display:flex;flex-direction:column}
 .pos .pfig{background:#fdfbf8;border-bottom:1px solid var(--line);padding:6px 10px 0;display:flex;justify-content:center}
@@ -329,74 +333,81 @@ function masterEnrollmentSection(){return `
 
 /* ===== Lessons ===== */
 /* ===== Hand-position illustrations =====
-   Original line drawings built from a few body templates, so every position
-   is drawn in the same style. Hands: solid = resting lightly on the body,
-   dashed = hovering just above it, faint = slid underneath (e.g. under the head). */
+   A jointed wooden artist's mannequin, built from a few body templates so every
+   position is drawn in the same style. On yourself, the mannequin's own arms
+   reach to each position; with another person, a pale figure rests and the
+   darker wooden forearms are yours. Hands: solid with a soft glow = resting
+   lightly on the body, dashed = hovering just above it, faint = slid underneath
+   (e.g. under the head). */
 var FIG=(function(){
   function f(n){return Math.round(n*10)/10;}
   function rot(x,y,a){var r=a*Math.PI/180;return [x*Math.cos(r)-y*Math.sin(r),x*Math.sin(r)+y*Math.cos(r)];}
-  /* hand pointing "up" (fingers toward -y), wrist at +y, centred on 0,0 */
-  var PALM="M-8.5,19 C-9.6,10 -9.6,2 -8.6,-5 L-8.2,-15.5 Q-8,-21 -3,-21.6 L3,-21.6 Q8,-21 8.2,-15.5 L8.6,-5 C9.6,2 9.6,10 8.5,19 Z";
-  var FINGERS="M-4.1,-5.5 L-4.1,-19 M0,-5.5 L0,-20.6 M4.1,-5.5 L4.1,-19";
+  /* carved paddle hand pointing "up" (fingers toward -y), wrist at +y, centred on 0,0 */
+  var PAD="M-5.6,19 Q-8.8,13 -8.8,3 Q-8.8,-15 0,-21.5 Q8.8,-15 8.8,3 Q8.8,13 5.6,19 Z";
   var TWO="M-4,13 L-4,-11 Q-4,-15 0,-15 Q4,-15 4,-11 L4,13 Z";
+  /* a wooden limb: outlined round-capped segment through the given points */
+  function seg(pts,w){
+    var d="M"+pts.map(function(p){return f(p[0])+","+f(p[1]);}).join(" L");
+    return '<path class="seg-o" stroke-width="'+(w+3)+'" d="'+d+'"/><path class="seg" stroke-width="'+w+'" d="'+d+'"/>';
+  }
+  function jt(x,y,r){return '<circle class="jt" cx="'+f(x)+'" cy="'+f(y)+'" r="'+r+'"/>';}
+  /* a resting paddle hand for the figure being drawn (not a treating hand) */
+  function rpad(x,y,a,s){return '<g transform="translate('+f(x)+' '+f(y)+') rotate('+a+') scale('+(s||1)+')"><path class="cpad" d="'+PAD+'"/></g>';}
   function hand(h,arms){
     var s=h.s||1,a=h.a||0,k=h.k||"touch",out="";
     var w=rot(0,19*s,a),wx=h.x+w[0],wy=h.y+w[1];
     if(arms==="prac"&&h.arm!==false){
       var ad=(h.arm!==undefined?h.arm:a+180)*Math.PI/180, L=h.al||90;
-      out+='<line class="parm" x1="'+f(wx)+'" y1="'+f(wy)+'" x2="'+f(wx+Math.sin(ad)*L)+'" y2="'+f(wy-Math.cos(ad)*L)+'"/>';
+      out+='<g class="p">'+seg([[wx+Math.sin(ad)*L,wy-Math.cos(ad)*L],[wx,wy]],11)+'</g>';
     }
-    out+='<g class="hand '+k+'" transform="translate('+f(h.x)+' '+f(h.y)+') rotate('+a+') scale('+s+')">';
-    if(h.two)out+='<path d="'+TWO+'"/><path class="fl" d="M0,-12 L0,10"/>';
+    out+='<g class="hand '+k+(arms==="prac"?" p":"")+'" transform="translate('+f(h.x)+' '+f(h.y)+') rotate('+a+') scale('+s+')">';
+    out+='<circle class="glow" cx="0" cy="-1" r="'+(h.two?11:15)+'"/>';
+    if(h.two)out+='<path class="pad" d="'+TWO+'"/><path class="fl" d="M0,-12 L0,10"/>';
     else{
       var t=h.t||1;
-      out+='<ellipse class="th" cx="'+(t*9.5)+'" cy="3" rx="3.4" ry="8.5" transform="rotate('+(t*-16)+' '+(t*9.5)+' 3)"/>';
-      out+='<path d="'+PALM+'"/><path class="fl" d="'+FINGERS+'"/>';
+      out+='<path class="pad" d="'+PAD+'"/><path class="fl" d="M'+(t*2.5)+',9 Q'+(t*7.5)+',3 '+(t*7.8)+',-6"/>';
     }
+    out+='<circle class="jt" cx="0" cy="19" r="4.4"/>';
     return out+'</g>';
   }
-  /* self-treatment arms: shoulder -> elbow -> wrist, drawn as outlined limbs */
+  /* self-treatment arms: shoulder ball -> upper arm -> elbow ball -> forearm */
   function selfArm(h,sh){
     var s=h.s||1,a=h.a||0,w=rot(0,19*s,a),wx=h.x+w[0],wy=h.y+w[1];
     var e=h.el;
     if(!e){var ad=(a+180)*Math.PI/180;e=[wx+Math.sin(ad)*52,wy-Math.cos(ad)*52];}
-    var d="M"+f(sh[0])+","+f(sh[1])+" L"+f(e[0])+","+f(e[1])+" L"+f(wx)+","+f(wy);
-    return '<path class="limb-o" d="'+d+'"/><path class="limb" d="'+d+'"/>';
+    return seg([sh,e],12)+jt(sh[0],sh[1],8)+seg([e,[wx,wy]],10)+jt(e[0],e[1],5.5);
   }
+  var HEAD="M100 14 C118 14 121 38 117 51 C113 62 87 62 83 51 C79 38 82 14 100 14 Z";
   /* ---- templates ---- */
   var T={};
   T.table=function(o){ // top-down, lying, head at top
     var up=o.view!=="back",g="",bg='<rect class="tbl" x="30" y="2" width="140" height="456" rx="14"/>';
     if(up)bg+='<rect class="pillow" x="64" y="8" width="72" height="44" rx="12"/>';
     else bg+='<rect class="pillow" x="70" y="4" width="60" height="30" rx="10"/>';
-    var M=function(d){return d.replace(/(-?\d+\.?\d*)\s(-?\d+\.?\d*)/g,function(m,x,y){return f(200-x)+" "+y;});};
-    var arm="M52 92 Q42 96 41 112 L38 236 Q38 248 46 248 Q53 248 53 238 L57 150 L58 104 Z";
-    var leg="M67 228 L99 230 L97 252 L95 330 L93 404 L79 404 L76 330 L68 252 Z";
-    g+='<g class="body"><path d="'+arm+'"/><path d="'+M(arm)+'"/><path d="'+leg+'"/><path d="'+M(leg)+'"/>'
-     +'<path d="M90 76 Q74 78 62 82 Q50 86 50 100 L54 150 Q58 176 70 194 Q64 210 66 230 L134 230 Q136 210 130 194 Q142 176 146 150 L150 100 Q150 86 138 82 Q126 78 110 76 Z"/>'
-     +'<rect x="92" y="60" width="16" height="20" rx="4"/>'
-     +'<ellipse cx="86" cy="416" rx="9" ry="14"/><ellipse cx="114" cy="416" rx="9" ry="14"/>'
-     +'<ellipse cx="100" cy="40" rx="20" ry="25"/></g>';
-    g+='<path class="fold" d="M78 322 q8 4 16 0 M106 322 q8 4 16 0"/>';
-    if(up){
-      g+='<path class="hair" d="M80 40 Q78 14 100 14 Q122 14 120 40 Q117 24 100 22 Q83 24 80 40Z"/>';
-      g+='<path class="face" d="M89 38 q4 3 8 0 M103 38 q4 3 8 0 M100 41 l-2 7 h4 M95 55 q5 3 10 0"/>';
-    }else{
-      g+='<ellipse class="hair" cx="100" cy="40" rx="20" ry="25"/><path class="face" d="M100 18 L100 40"/>';
-      g+='<path class="spine" d="M100 80 L100 226"/><path class="fold" d="M66 106 q12 10 22 2 M134 106 q-12 10 -22 2"/>';
-    }
+    [84,116].forEach(function(x){var d=x<100?1:-1;
+      g+=seg([[x,238],[x,316]],19)+seg([[x,328],[x+d,398]],14)+jt(x,322,8.5)+jt(x+d,401,5.5)
+        +'<g class="body"><ellipse cx="'+(x+2*d)+'" cy="416" rx="9" ry="14"/></g>';});
+    g+=jt(84,233,9)+jt(116,233,9);
+    g+='<g class="body"><path d="M66 182 Q100 176 134 182 L132 226 Q100 238 68 226 Z"/><ellipse cx="100" cy="172" rx="26" ry="11"/>'
+     +'<path d="M62 84 Q100 74 138 84 Q146 120 130 160 Q100 168 70 160 Q54 120 62 84 Z"/></g>';
+    g+=seg([[100,58],[100,80]],14)+'<g class="body"><path d="'+HEAD+'"/></g><path class="grain" d="M92 22 Q88 36 92 50"/>';
+    [[56,48,46,1],[144,152,154,-1]].forEach(function(A){
+      g+=seg([[A[0],95],[A[1],166]],14)+jt(A[1],170,6.5)+seg([[A[1],174],[A[2],232]],11)+rpad(A[2],255,180,0.95)+jt(A[2],236,4.5)+jt(A[0],92,10);});
+    if(up)g+='<path class="grain" d="M78 124 Q100 136 122 124 M84 204 Q100 212 116 204"/>';
+    else g+='<path class="spine" d="M100 84 L100 226"/><path class="grain" d="M70 104 q12 14 24 4 M130 104 q-12 14 -24 4"/>';
     return {vb:{head:"38 -6 124 118",upper:"22 2 156 196",torso:"22 60 156 200",full:"18 -2 164 464",legs:"22 220 156 230",lower:"22 150 156 200"}[o.zoom||"full"],bg:bg,body:g};
   };
   function seatedBody(back){
     var g='';
-    var M=function(d){return d.replace(/(-?\d+\.?\d*)\s(-?\d+\.?\d*)/g,function(m,x,y){return f(200-x)+" "+y;});};
-    var thigh="M62 186 L98 186 L97 220 Q80 230 63 220 Z",shin="M70 226 L92 226 L90 284 L74 284 Z";
-    g+='<g class="body"><path d="'+shin+'"/><path d="'+M(shin)+'"/><ellipse cx="82" cy="290" rx="12" ry="6"/><ellipse cx="118" cy="290" rx="12" ry="6"/>'
-     +'<path d="'+thigh+'"/><path d="'+M(thigh)+'"/><ellipse cx="80" cy="221" rx="17" ry="9"/><ellipse cx="120" cy="221" rx="17" ry="9"/>'
-     +'<path d="M90 74 Q74 76 62 80 Q50 84 50 98 L54 150 Q56 172 62 190 L138 190 Q144 172 146 150 L150 98 Q150 84 138 80 Q126 76 110 74 Z"/>'
-     +'<rect x="92" y="58" width="16" height="20" rx="4"/><ellipse cx="100" cy="40" rx="19" ry="24"/></g>';
-    if(back){g+='<ellipse class="hair" cx="100" cy="40" rx="19" ry="24"/><path class="spine" d="M100 80 L100 188"/><path class="fold" d="M70 104 q12 12 22 2 M130 104 q-12 12 -22 2"/>';}
-    else{g+='<path class="hair" d="M81 40 Q79 16 100 16 Q121 16 119 40 Q116 26 100 24 Q84 26 81 40Z"/><path class="face" d="M90 38 q4 3 8 0 M102 38 q4 3 8 0 M100 41 l-2 7 h4 M95 53 q5 3 10 0"/>';}
+    [80,120].forEach(function(x){var d=x<100?1:-1;
+      g+=seg([[x+d,232],[x+2*d,280]],17)+jt(x+2*d,284,5.5)+'<g class="body"><ellipse cx="'+(x+2*d)+'" cy="292" rx="12" ry="6"/></g>'
+        +seg([[x,198],[x,212]],30)+jt(x,222,10);});
+    g+='<g class="body"><path d="M64 166 Q100 160 136 166 L138 194 Q100 202 62 194 Z"/><ellipse cx="100" cy="158" rx="25" ry="10"/>'
+     +'<path d="M60 82 Q100 72 140 82 Q148 118 134 150 Q100 158 66 150 Q52 118 60 82 Z"/></g>'
+     +seg([[100,56],[100,78]],14)+'<g class="body"><path d="'+HEAD+'"/></g><path class="grain" d="M92 22 Q88 36 92 50"/>'
+     +jt(57,88,8)+jt(143,88,8);
+    if(back)g+='<path class="spine" d="M100 82 L100 192"/><path class="grain" d="M70 104 q12 14 24 4 M130 104 q-12 14 -24 4"/>';
+    else g+='<path class="grain" d="M76 118 Q100 130 124 118 M84 180 Q100 188 116 180"/>';
     return g;
   }
   T.front=function(o){return {vb:{head:"40 -4 120 120",upper:"26 -4 148 210",full:"20 -4 160 304",legs:"30 150 140 150"}[o.zoom||"upper"],bg:'<rect class="chair" x="58" y="70" width="84" height="122" rx="8"/>',body:seatedBody(false),sh:{R:[57,88],L:[143,88]}};};
@@ -404,12 +415,13 @@ var FIG=(function(){
   T.side=function(o){
     var bg='<rect class="chair" x="70" y="96" width="8" height="112" rx="3"/><rect class="chair" x="70" y="198" width="98" height="8" rx="3"/><path class="chairl" d="M76 206 L76 292 M162 206 L162 292"/>';
     var g='';
-    g+='<g class="body"><path d="M170 206 L188 206 L186 282 L172 282 Z"/><path d="M166 280 L198 280 Q204 290 196 293 L166 293 Z"/>'
-     +'<path d="M86 178 L178 184 Q191 186 191 198 Q191 211 178 211 L86 205 Z"/>'
-     +'<path d="M98 74 Q84 80 84 100 L86 198 L140 198 Q138 160 136 130 Q140 100 130 84 Q122 74 110 74 Z"/>'
-     +'<rect x="102" y="58" width="16" height="22" rx="4"/><ellipse cx="112" cy="40" rx="19" ry="24"/></g>'
-     +'<path class="hair" d="M93 44 Q90 16 112 16 Q128 16 131 32 Q118 22 104 30 Q100 40 102 60 Q94 56 93 44Z"/><path class="face" d="M131 36 q4 6 0 10 M124 36 q3 2 6 0 M125 54 q3 1 5 -1"/>';
-    if(!o.noArm)g+='<path class="limb-o" d="M110 90 L116 156 L160 176"/><path class="limb" d="M110 90 L116 156 L160 176"/>';
+    g+=seg([[179,210],[179,276]],16)+jt(179,281,5.5)+'<g class="body"><path d="M168 284 L196 284 Q204 290 196 294 L168 294 Z"/></g>'
+     +seg([[96,194],[176,196]],24)+jt(180,198,10)
+     +'<g class="body"><path d="M98 74 Q84 80 84 100 L88 150 Q92 166 100 172 L134 172 Q138 150 136 130 Q140 100 130 84 Q122 74 110 74 Z"/><ellipse cx="114" cy="178" rx="24" ry="9"/><path d="M88 182 Q112 176 140 182 L140 204 Q112 212 88 204 Z"/></g>'
+     +seg([[110,56],[110,78]],14)+'<g class="body"><path transform="translate(12 0)" d="'+HEAD+'"/></g><path class="grain" d="M118 22 Q124 36 120 50"/>';
+    if(!o.noArm){
+      g+=seg([[110,90],[116,154]],12)+jt(110,90,8)+jt(116,156,5.5)+seg([[116,156],[158,176]],10)+rpad(175,184,115,0.95)+jt(158,176,4.5);
+    }
     return {vb:{upper:"60 -4 160 214",full:"56 -4 166 304",legs:"80 140 140 160"}[o.zoom||"upper"],bg:bg,body:g};
   };
   /* who is giving: self arms attach to the body; practitioner arms come in from outside */
