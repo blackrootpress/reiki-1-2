@@ -414,7 +414,18 @@ var FIG=(function(){
     var extra=o.extra||"";
     return '<svg class="rkfig" viewBox="'+t.vb+'" xmlns="http://www.w3.org/2000/svg"'+lab+'>'+t.bg+below+t.body+(arms==="self"?armsSvg:"")+above+extra+badge+'</svg>';
   }
-  return {draw:draw};
+  /* a seated mannequin facing you, for lesson illustrations: arms resting in the lap ("lap") or hanging at the sides ("down") */
+  function seated(pose,chair){
+    var g=chair?'<rect class="chair" x="58" y="70" width="84" height="122" rx="8"/>':'';
+    var A=pose==="down"?[[57,88,45,146,43,196,180],[143,88,155,146,157,196,180]]:[[57,88,46,144,66,186,150],[143,88,154,144,134,186,210]];
+    g+=seatedBody(false);
+    A.forEach(function(a){
+      var r=a[6]*Math.PI/180,hx=a[4]+Math.sin(r)*18,hy=a[5]-Math.cos(r)*18;
+      g+=seg([[a[0],a[1]],[a[2],a[3]]],12)+jt(a[2],a[3],5.5)+seg([[a[2],a[3]],[a[4],a[5]]],10)+rpad(hx,hy,a[6],0.95)+jt(a[4],a[5],4.5)+jt(a[0],a[1],8);
+    });
+    return g;
+  }
+  return {draw:draw,seated:seated};
 })();
 
 /* ===== Position data =====
@@ -1329,7 +1340,7 @@ ${attunementSteps()}
 <div class="kicker">Lesson 5</div>
 <h2>Distance Healing</h2>
 <p>With Hon Sha Ze Sho Nen, you can share Reiki with someone in another room, another city or another country, and even send it across time.</p>
-<figure class="fig"><svg viewBox="0 0 720 250" role="img" aria-label="Reiki sent from you to another person at a distance" xmlns="http://www.w3.org/2000/svg"><rect width="720" height="250" rx="14" fill="#eef1fb"/><circle cx="90" cy="96" r="20" fill="#e4dcee" stroke="#c9bcd8" stroke-width="2"/><path d="M58 160 Q90 112 122 160Z" fill="#e4dcee" stroke="#c9bcd8" stroke-width="2"/><circle cx="630" cy="96" r="20" fill="#e4dcee" stroke="#c9bcd8" stroke-width="2"/><path d="M598 160 Q630 112 662 160Z" fill="#e4dcee" stroke="#c9bcd8" stroke-width="2"/><path d="M120 104 Q360 -20 600 104" fill="none" stroke="#d64541" stroke-width="5" opacity=".85" transform="translate(0,0)"/><path d="M120 104 Q360 -10 600 104" fill="none" stroke="#f08a24" stroke-width="5" opacity=".85" transform="translate(0,6)"/><path d="M120 104 Q360 0 600 104" fill="none" stroke="#f4b400" stroke-width="5" opacity=".85" transform="translate(0,12)"/><path d="M120 104 Q360 10 600 104" fill="none" stroke="#2fa36b" stroke-width="5" opacity=".85" transform="translate(0,18)"/><path d="M120 104 Q360 20 600 104" fill="none" stroke="#2e86de" stroke-width="5" opacity=".85" transform="translate(0,24)"/><path d="M120 104 Q360 30 600 104" fill="none" stroke="#3c4fc6" stroke-width="5" opacity=".85" transform="translate(0,30)"/><path d="M120 104 Q360 40 600 104" fill="none" stroke="#9b3fb5" stroke-width="5" opacity=".85" transform="translate(0,36)"/><text x="90" y="190" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="15" font-weight="600" fill="#2b2438">You</text><text x="630" y="190" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="15" font-weight="600" fill="#2b2438">Them</text><text x="360" y="150" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="14" fill="#6b6478">across the room, across the world, or across time</text><text x="360" y="222" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="13" fill="#2b2438">Hon Sha Ze Sho Nen connects you · Cho Ku Rei and Sei Heiki carry the healing</text></svg></figure>
+<figure class="fig"><svg class="rkfig" viewBox="0 0 720 250" role="img" aria-label="Reiki sent from you to another person at a distance" xmlns="http://www.w3.org/2000/svg"><rect width="720" height="250" rx="14" fill="#eef1fb"/><g transform="translate(50.0 46) scale(0.4)">${FIG.seated("lap",0)}</g><g transform="translate(590.0 46) scale(0.4)">${FIG.seated("lap",0)}</g><path d="M120 104 Q360 -20 600 104" fill="none" stroke="#d64541" stroke-width="5" opacity=".85" transform="translate(0,0)"/><path d="M120 104 Q360 -10 600 104" fill="none" stroke="#f08a24" stroke-width="5" opacity=".85" transform="translate(0,6)"/><path d="M120 104 Q360 0 600 104" fill="none" stroke="#f4b400" stroke-width="5" opacity=".85" transform="translate(0,12)"/><path d="M120 104 Q360 10 600 104" fill="none" stroke="#2fa36b" stroke-width="5" opacity=".85" transform="translate(0,18)"/><path d="M120 104 Q360 20 600 104" fill="none" stroke="#2e86de" stroke-width="5" opacity=".85" transform="translate(0,24)"/><path d="M120 104 Q360 30 600 104" fill="none" stroke="#3c4fc6" stroke-width="5" opacity=".85" transform="translate(0,30)"/><path d="M120 104 Q360 40 600 104" fill="none" stroke="#9b3fb5" stroke-width="5" opacity=".85" transform="translate(0,36)"/><text x="90" y="190" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="15" font-weight="600" fill="#2b2438">You</text><text x="630" y="190" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="15" font-weight="600" fill="#2b2438">Them</text><text x="360" y="150" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="14" fill="#6b6478">across the room, across the world, or across time</text><text x="360" y="222" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="13" fill="#2b2438">Hon Sha Ze Sho Nen connects you · Cho Ku Rei and Sei Heiki carry the healing</text></svg></figure>
 <h3>Consent comes first</h3>
 <div class="callout warn">Always ask permission before sending Reiki to another person. If you can't ask (for example, someone is unconscious), send it with the intention that they may accept or decline it for their highest good, and never to someone who has said no.</div>
 <h3>Four ways to make the connection</h3>
